@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quote of the Day</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Quote of the Day</h1>
+      <figure data-testid="quote" aria-live="polite">
+        <blockquote data-testid="quote-text"></blockquote>
+        <figcaption data-testid="quote-author"></figcaption>
+      </figure>
+      <div class="actions">
+        <button type="button" data-testid="new-quote">New quote</button>
+        <button type="button" data-testid="favorite-toggle" aria-pressed="false">Add to favorites</button>
+      </div>
+      <p role="status" data-testid="storage-notice" hidden>Your browser isn't letting this page save data, so favorites will be lost when you leave.</p>
+      <section data-testid="favorites" aria-labelledby="favorites-heading">
+        <h2 id="favorites-heading">Your favorites</h2>
+        <ol data-testid="favorites-list"></ol>
+        <p data-testid="favorites-empty">No favorites yet. Use “Add to favorites” on a quote you like.</p>
+      </section>
+    </main>
+  </body>
+</html>

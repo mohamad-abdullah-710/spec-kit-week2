@@ -1,0 +1,127 @@
+:root {
+  --text: #1f2328;
+  --muted: #57606a;
+  --bg: #ffffff;
+  --accent: #0b5cad;
+  --border: #d0d7de;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  overflow-wrap: anywhere;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+figure,
+blockquote {
+  margin: 0;
+}
+
+[data-testid='quote'] blockquote {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+[data-testid='quote'] figcaption {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+button {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  color: var(--accent);
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eaf2fb;
+}
+
+button:active {
+  background: #d4e5f7;
+}
+
+/* The '/ ""' alt text keeps the star out of the button's accessible name. */
+[data-testid='favorite-toggle']::before {
+  content: '☆ ';
+  content: '☆ ' / '';
+}
+
+[data-testid='favorite-toggle'][aria-pressed='true'] {
+  color: var(--bg);
+  background: var(--accent);
+}
+
+[data-testid='favorite-toggle'][aria-pressed='true']::before {
+  content: '★ ';
+  content: '★ ' / '';
+}
+
+[role='status'] {
+  padding: 0.75rem 1rem;
+  border: 2px solid #9a6700;
+  border-radius: 0.5rem;
+  background: #fff8c5;
+}
+
+[data-testid='favorites-list'] {
+  padding: 0;
+  list-style: none;
+}
+
+[data-testid='favorite-item'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.25rem 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+[data-testid='favorite-item'] blockquote {
+  flex: 1 1 100%;
+}
+
+[data-testid='favorite-item'] p {
+  flex: 1 1 auto;
+  margin: 0;
+  color: var(--muted);
+}
+
+[data-testid='favorites-empty'] {
+  color: var(--muted);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
