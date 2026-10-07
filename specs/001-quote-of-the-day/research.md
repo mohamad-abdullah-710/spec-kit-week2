@@ -94,7 +94,8 @@ constitution asks for more than this scope allows, the gap is recorded in
 
 ## R8. Continuous integration
 
-- **Decision**: No CI workflow. Run `npm test` locally before submitting. It includes the
-  coverage thresholds, so the coverage gate still applies.
+- **Decision**: No CI workflow. Run `npm run test:coverage` locally before submitting. It runs
+  the same tests as `npm test` and also enforces the coverage thresholds, so the coverage gate
+  still applies.
 - **Rationale**: The user removed the GitHub Actions workflow, and the project is a git
   repository but isn't pushed to GitHub. Recorded in Complexity Tracking.
