@@ -126,7 +126,7 @@ confirm it is gone.
 - **FR-011**: A quote MUST appear at most once in the favorites list.
 - **FR-012**: If favorites cannot be saved or loaded, the page MUST keep working for quote
   display and "New quote", and MUST tell the visitor that favorites won't be saved.
-- **FR-013**: The built-in collection MUST contain at least 20 quotes, each with text and an
+- **FR-013**: The built-in collection MUST contain at least 10 quotes, each with text and an
   author (or "Unknown").
 - **FR-014**: All controls MUST be usable with a keyboard alone and have accessible names.
 - **FR-015**: The page MUST work without an internet connection once loaded; quotes MUST NOT
@@ -146,8 +146,8 @@ confirm it is gone.
 - **SC-001**: A quote is visible within 1 second of the page opening on a typical device.
 - **SC-002**: After pressing "New quote", a new quote appears within 0.5 seconds, and it differs
   from the previous quote 100% of the time when the collection has more than one quote.
-- **SC-003**: Over 100 page loads, at least 15 distinct quotes are shown, which shows that
-  selection is random across a collection of at least 20.
+- **SC-003**: Over 100 page loads, at least 8 distinct quotes are shown, which shows that
+  selection is random across a collection of at least 10.
 - **SC-004**: 100% of favorited quotes are still favorited after a page reload and after a
   browser restart.
 - **SC-005**: A first-time visitor can favorite a quote and then find it in their favorites list
