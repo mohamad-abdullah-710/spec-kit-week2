@@ -1,7 +1,8 @@
 # Contract: Favorites Storage Schema
 
 **Version**: 1 | **Applies to**: `src/js/favorites-store.js`
-**Verified by**: `tests/contract/storage-schema.test.js`
+**Verified by**: `tests/favorites-store.test.js` (unit tests run against an in-memory fake
+storage; there is a test case for every row in the reading and writing rules below)
 
 This is the only data that lasts between visits. Changing its shape is a breaking change. Any
 change MUST bump `version` and add a migration, or keep reading the old format.

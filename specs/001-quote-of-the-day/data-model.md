@@ -21,7 +21,8 @@ One entry in the built-in collection (`src/js/quotes.js`). The collection is rea
 - At least 10 quotes (FR-013).
 - All `id` values are unique.
 - The collection and each quote are frozen at runtime, so code cannot change them.
-- A unit test enforces every rule above, so a bad edit to the data fails CI.
+- `tests/quote-picker.test.js` includes a check that the real collection follows every rule
+  above, so a bad edit to the data fails `npm test`.
 
 ## Favorite
 

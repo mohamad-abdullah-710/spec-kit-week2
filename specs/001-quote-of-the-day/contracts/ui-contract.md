@@ -1,12 +1,12 @@
 # Contract: Page UI
 
 **Applies to**: `src/index.html`, `src/js/app.js`
-**Verified by**: `tests/contract/ui-contract.test.js` (structure) and
-`tests/integration/*.test.js` (behavior)
+**Verified by**: the manual scenarios in [quickstart.md](../quickstart.md). There are no
+automated DOM tests in this simplified plan (see Complexity Tracking in [plan.md](../plan.md)).
 
-This is the interface visitors and assistive technology rely on. Tests find elements by their
-**role and accessible name**, or by the `data-testid` values listed here, never by CSS classes.
-Changing a role, name, or `data-testid` is a contract change.
+This is the interface visitors and assistive technology rely on. `app.js` finds elements by
+the `data-testid` values listed here, never by CSS classes. Changing a role, name, or
+`data-testid` is a contract change.
 
 ## Elements
 
