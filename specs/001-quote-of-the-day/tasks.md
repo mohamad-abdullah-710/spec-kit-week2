@@ -199,7 +199,7 @@ the US1 and US2 scenarios still pass.
 - [X] T027 [P] Write `README.md` at the repository root (Principle V): a one-paragraph description; requirements (Node 22 or newer, no `npm install` needed); `npm start` and why `file://` doesn't work; `npm test` and `npm run test:coverage`; the project layout (mirroring plan.md → Source Code); the storage key name and format (link to `specs/001-quote-of-the-day/contracts/storage-schema.md`); and a short "Deliberate simplifications" note linking to plan.md → Complexity Tracking (D1–D4).
 - [X] T028 Self-review every file in `src/`, `tests/`, and `scripts/` against the Conventions section above and constitution Principles I and IV (plan D1/D2 mitigation). Check for: consistent style, every export with JSDoc, no dead or commented-out code, no `console.log` left in `src/`, no `innerHTML`, no empty `catch`, functions within ~50 lines, and no DOM or `window` access outside `app.js` and `main.js`. Fix anything found in place.
 - [X] T029 Run `npm run test:coverage` one last time and confirm exit code 0 with both coverage gates met.
-- [ ] T030 Run `npm start` and go through **all 13** manual scenarios in `specs/001-quote-of-the-day/quickstart.md` in a real browser, including the DevTools steps (9, 10, 11, 12). Fix any failure in the relevant `src/` file and repeat that scenario.
+- [X] T030 Run `npm start` and go through **all 13** manual scenarios in `specs/001-quote-of-the-day/quickstart.md` in a real browser, including the DevTools steps (9, 10, 11, 12). Fix any failure in the relevant `src/` file and repeat that scenario.
 
 ---
 
