@@ -33,7 +33,7 @@ function probe(storage) {
  * @param {Set<string>} validIds - Ids of quotes in the current collection.
  * @returns {string[]} Known ids, without duplicates, in stored order.
  */
-export function parseStoredIds(raw, validIds) {
+function parseStoredIds(raw, validIds) {
   let value;
   try {
     value = JSON.parse(raw ?? 'null');

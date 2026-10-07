@@ -52,10 +52,17 @@ function createView(document) {
 
   return {
     els,
-    /** @param {Quote} quote @param {boolean} isFavorite */
-    renderQuote(quote, isFavorite) {
+    /**
+     * Only call when the displayed quote changes: the quote is an aria-live region, so
+     * rewriting it would make screen readers read it out again.
+     * @param {Quote} quote
+     */
+    renderQuote(quote) {
       els.quoteText.textContent = quote.text;
       els.quoteAuthor.textContent = `— ${quote.author}`;
+    },
+    /** @param {boolean} isFavorite */
+    renderFavoriteToggle(isFavorite) {
       els.favoriteToggle.setAttribute('aria-pressed', String(isFavorite));
       els.favoriteToggle.textContent = isFavorite ? 'Remove from favorites' : 'Add to favorites';
     },
@@ -90,20 +97,21 @@ export function initApp({ document, storage, random = Math.random, quotes = QUOT
   const store = createFavoritesStore({ storage, validIds: [...quotesById.keys()] });
   let currentQuote = pickRandomQuote(quotes, { random });
 
-  const render = () => {
-    view.renderQuote(currentQuote, store.has(currentQuote.id));
+  const renderFavoritesState = () => {
+    view.renderFavoriteToggle(store.has(currentQuote.id));
     const favorites = store.list().map((id) => quotesById.get(id));
     view.renderFavorites(favorites, store.mode === 'memory-only');
   };
 
   view.els.newQuote.addEventListener('click', () => {
     currentQuote = pickRandomQuote(quotes, { excludeId: currentQuote.id, random });
-    render();
+    view.renderQuote(currentQuote);
+    view.renderFavoriteToggle(store.has(currentQuote.id));
   });
 
   view.els.favoriteToggle.addEventListener('click', () => {
     store.toggle(currentQuote.id);
-    render();
+    renderFavoritesState();
   });
 
   view.els.favoritesList.addEventListener('click', (event) => {
@@ -114,9 +122,10 @@ export function initApp({ document, storage, random = Math.random, quotes = QUOT
     const { quoteId } = button.closest('li').dataset;
     const removedIndex = store.list().indexOf(quoteId);
     store.remove(quoteId);
-    render();
+    renderFavoritesState();
     view.focusAfterRemove(removedIndex);
   });
 
-  render();
+  view.renderQuote(currentQuote);
+  renderFavoritesState();
 }

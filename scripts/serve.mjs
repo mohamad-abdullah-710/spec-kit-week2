@@ -20,6 +20,7 @@ const CONTENT_TYPES = {
  * Resolves a URL path to a file inside ROOT.
  * @param {string} urlPath - The request path, e.g. "/js/app.js".
  * @returns {string | null} The absolute file path, or null if it would escape ROOT.
+ * @throws {URIError} If `urlPath` contains malformed percent-encoding.
  */
 function resolveFile(urlPath) {
   const relative = urlPath === '/' ? 'index.html' : decodeURIComponent(urlPath).slice(1);
@@ -29,7 +30,14 @@ function resolveFile(urlPath) {
 
 const server = createServer(async (req, res) => {
   const { pathname } = new URL(req.url ?? '/', 'http://localhost');
-  const filePath = resolveFile(pathname);
+  let filePath;
+  try {
+    filePath = resolveFile(pathname);
+  } catch {
+    // Malformed percent-encoding (e.g. "/%E0%A4%A"): reject the request, don't crash.
+    res.writeHead(400).end('Bad request');
+    return;
+  }
   if (filePath === null) {
     res.writeHead(403).end('Forbidden');
     return;

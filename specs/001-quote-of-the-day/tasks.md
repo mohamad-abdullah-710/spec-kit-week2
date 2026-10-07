@@ -284,3 +284,11 @@ Each step leaves the page working and `npm test` passing.
 - The project is a git repository: commit after each task or checkpoint
 - Don't add npm dependencies, a linter, a type checker, DOM tests, or CI. Those were
   deliberately removed (plan.md → Complexity Tracking, D1–D4)
+
+---
+
+## Phase 7: Convergence
+
+- [X] T031 CRITICAL: Handle malformed percent-encoding in `scripts/serve.mjs`: wrap the `decodeURIComponent` call in `resolveFile()` (or the request handler) so a `URIError` returns `400 Bad Request` instead of crashing the dev server (repro: `GET /%E0%A4%A`), with a comment explaining the fallback per Constitution I (contradicts)
+- [X] T032 Stop re-announcing the current quote in `src/js/app.js`: only set `quoteText`/`quoteAuthor` `textContent` when the displayed quote actually changed (on load and on "New quote"), so the `aria-live` region is not re-read on favorite toggle or Remove; keep updating the toggle's `aria-pressed` and label on every render per FR-007 (partial)
+- [X] T033 Make `parseStoredIds` module-private in `src/js/favorites-store.js` (drop the `export`), keeping the public API to `FAVORITES_KEY`, `PROBE_KEY` and `createFavoritesStore` as planned, then confirm `npm run test:coverage` still passes per Constitution IV (unrequested)
